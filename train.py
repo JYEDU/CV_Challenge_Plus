@@ -13,13 +13,13 @@ def main():
     # Checking GPU Available
 
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-    os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "3" 
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     print('Device:', device)  # 출력결과: cuda
-    print('Count of using GPUs:', torch.cuda.device_count())  # 출력결과: 2 (2, 3 두개 사용하므로)
-    print('Current cuda device:', torch.cuda.current_device())  # 출력결과: 2 (2, 3 중 앞의 GPU #2 의미)
+    print('Count of using GPUs:', torch.cuda.device_count())
+    print('Current cuda device:', torch.cuda.current_device())  
 
     # Configure Data Augmentation
 
@@ -60,7 +60,7 @@ def main():
 
 
     lr = 1e-4
-    total_epochs = 1 #100
+    total_epochs = 100
     model_path = 'save_model'
     optimizer = optim.Adam(MODEL.parameters(),lr = lr)
     loss_func = torch.nn.MSELoss().to(device)
